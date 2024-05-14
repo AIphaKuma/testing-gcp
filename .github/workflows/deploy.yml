@@ -34,3 +34,4 @@ jobs:
             --entry-point=getHotels \
             --trigger-http \
             --allow-unauthenticated
+            --quiet
