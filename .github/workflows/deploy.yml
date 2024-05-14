@@ -25,7 +25,8 @@ jobs:
           export_default_credentials: true  # Configure gcloud pour utiliser les credentials du compte de service
 
       - name: Deploy to GCP
-        run: |
+        run: 
+          gcloud auth login
           gcloud functions deploy function-hotel-list \
           --gen2 \
           --runtime=nodejs20 \
