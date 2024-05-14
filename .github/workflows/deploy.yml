@@ -26,7 +26,6 @@ jobs:
 
       - name: Deploy to GCP
         run: 
-          gcloud auth login
           gcloud functions deploy function-hotel-list \
           --gen2 \
           --runtime=nodejs20 \
