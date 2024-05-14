@@ -25,11 +25,12 @@ jobs:
           export_default_credentials: true
 
       - name: Deploy to GCP
-        run: 
-          gcloud functions deploy function-hotel-list \
-          --gen2 \
-          --runtime=nodejs20 \
-          --region=us-east1  \
-          --source=. \
-          --entry-point=getHotels \
-          --trigger-http --allow-unauthenticated
+        run: |
+          gcloud beta functions deploy function-hotel-list \
+            --gen2 \
+            --runtime=nodejs16 \ # Check supported runtime if nodejs20 is not available
+            --region=us-east1 \
+            --source=. \
+            --entry-point=getHotels \
+            --trigger-http \
+            --allow-unauthenticated
