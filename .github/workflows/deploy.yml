@@ -17,12 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4  # Action pour récupérer le code du dépôt
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          project_id: ${{ secrets.GCP_PROJECT }}  # ID de votre projet GCP, stocké en tant que secret
-          service_account_key: ${{ secrets.SVCAccount }}  # Clé de compte de service
-          export_default_credentials: true  # Configure gcloud pour utiliser les credentials du compte de service
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          export_default_credentials: true
 
       - name: Deploy to GCP
         run: 
