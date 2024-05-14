@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2  # Action pour récupérer le code du dépôt
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0
         with:
           project_id: ${{ secrets.GCP_PROJECT }}  # ID de votre projet GCP, stocké en tant que secret
           service_account_key: ${{ secrets.SVCAccount }}  # Clé de compte de service
