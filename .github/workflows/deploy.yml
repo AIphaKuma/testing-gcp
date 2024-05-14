@@ -27,11 +27,12 @@ jobs:
       - name: Deploy to GCP
         run: |
           gcloud beta functions deploy function-hotel-list \
+            --quiet \
             --gen2 \
-            --runtime=nodejs16 \ # Check supported runtime if nodejs20 is not available
+            --runtime=nodejs20 \
             --region=us-east1 \
             --source=. \
             --entry-point=getHotels \
             --trigger-http \
             --allow-unauthenticated
-            --quiet
+        
