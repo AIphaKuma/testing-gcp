@@ -30,6 +30,7 @@ jobs:
         run: |
           gcloud beta functions deploy function-hotel-list \
             --quiet \
+            --project=${{ secrets.GCP_PROJECT_ID }} \
             --region=us-east1 \
             --source=. \
             --entry-point=getHotels \
