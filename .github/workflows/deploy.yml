@@ -22,7 +22,10 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }} 
           service_account_key: ${{ secrets.SVCAccount }} 
           export_default_credentials: true
-
+          
+      - name: Set GCP Project
+        run: gcloud config set project silver-course-423308-b5 
+        
       - name: Deploy to GCP
         run: |
-          gcloud functions deploy function-hotel-list --quiet --project=silver-course-423308-b5 --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
+          gcloud functions deploy function-hotel-list --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
