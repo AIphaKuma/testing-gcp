@@ -25,4 +25,4 @@ jobs:
 
       - name: Deploy to GCP
         run: |
-          gcloud beta functions deploy function-hotel-list --quiet --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
+          gcloud functions deploy function-hotel-list --quiet --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
