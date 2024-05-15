@@ -3,26 +3,26 @@ name: Deploy to Google Cloud
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - main  
   pull_request:
     branches:
-      - main  # Trigger on pull requests to the main branch
+      - main  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Run this job on an Ubuntu runner
+    runs-on: ubuntu-latest  
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Action to check out the repository code
+        uses: actions/checkout@v4  
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}  # Your Google Cloud project ID
-          service_account_key: ${{ secrets.SVCAccount }}  # The secret service account key
+          project_id: ${{ secrets.GCP_PROJECT_ID }} 
+          service_account_key: ${{ secrets.SVCAccount }} 
           export_default_credentials: true
 
       - name: Deploy to GCP
         run: |
-          gcloud functions deploy function-hotel-list --quiet --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
+          gcloud functions deploy function-hotel-list --quiet --project=${{ secrets.GCP_PROJECT_ID }} --region=us-east1 --source=. --entry-point=getHotels --trigger-http --allow-unauthenticated --runtime=nodejs20
